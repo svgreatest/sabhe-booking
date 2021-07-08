@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <h1 align="center"> Vaidika Dharma Sahaya Sabha (R) </h1>
+        <h2 align="center"> Events for {{tomo | date:"M d, Y"}} </h2>
+        <table>
+            <thead>
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Room</th>
+            </thead>
+            {% for b in booking %}
+            <tr>
+                <td align="center"> {{b.name}} </td>
+                <td align="center"> {{b.contact}} </td>
+                <td align="center"> {{b.room}} </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </head>
+</html>

@@ -1,0 +1,63 @@
+<html>
+    <style>
+     table {
+         border: 1px solid black;
+         border-spacing: 5px;
+     }
+     table.center {
+         margin-left: auto;
+         margin-right: auto;
+     }
+     hr.new {
+         border: 1px dotted red;
+     }
+
+     h1 {
+         font-size: 25px;
+     }
+     p {
+         font-size: 18px;
+     }
+     .invoice {
+         margin-top: 2em;
+     }
+
+     span {
+         color: blue;
+         border: 1px solid black;
+     }
+
+     .extra span {
+         color: inherit;
+     }
+
+
+    </style>
+    <body>
+        <div class="invoice extra">
+            <table class="table">
+                {% for b in booking %}
+                <tr>
+                    <td>
+                        <br>
+                        <h1 align="center"> Vaidhika Dharma Sahaya Sabha (R) </h1>
+                        <h3 align="center">40, 16th Cross Rd, GD Park Extension, Malleshwaram, Bengaluru - 560003</h3>
+                        <h2 align="center"> Expense voucher </h2>
+                        <h3 align="center"> (Office copy) </h3>
+                        <p align="right"> {% now "j M\, Y" %} </p>
+                        <p> Booking ID: {{ b.pk }} </p>
+                        <p> Paid Rs {{b.amount}} to {{ b.to }} towards {{b.category}}, {{b.sub_category}} by {{b.mode_of_payment}}</p>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <p align="right"> Signature </p>
+                        <p align="right"> (Secretary/Treasurer) </p>
+                    </td>
+                    {% endfor %}
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="GET" action="{% url 'view_pdf' %}">
+    {{form.start | linebreaks}}
+    {{form.end | linebreaks}}
+    <input type="Submit" value="View summary report as PDF">
+</form>
+
+<div>
+<table class="table"> 
+    <thead class="table table-dark">
+        <th>Room type</th>
+        <th>Amount</th>
+    </thead>
+    {% for key, value in data.items %}
+    <tr>
+        <td> {{ key }} </td>
+        <td> {{ value }} </td>
+    </tr>
+    {% endfor %}
+    <tr>
+        <td> Total </td>
+        <td> {{ total }} </td>
+    </tr>
+</table>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<h1> Rooms management</h1>
+<div>
+    <table class="table"> 
+        <thead class="table table-dark">
+            <th> Room ID </th>
+            <th> Room Type </th>
+            <th> Price </th>
+            <th> Actions </th>
+        </thead>
+        <tbody>
+            {% for room in rooms %}
+            <tr>
+                <td>{{room.room_id}} </td>
+                <td>{{room.room_type}} </td>
+                <td>{{room.price}} </td>
+                <td> 
+                    <a href="{% url 'room_edit' room.id %}">Edit</a>
+                    &nbsp; &nbsp; &nbsp
+                    <a href="{% url 'room_delete' room.id %}"> Delete </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <form method="POST" action="{% url 'rooms_create' %}">
+        {% csrf_token %}
+        <input type="submit" value="Add room">
+    </form>
+</div>
+{% endblock %}

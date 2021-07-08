@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1> Today's events </h1>
+<table class="table"> 
+    <thead class="table table-dark">
+        <th>ID</th>
+        <th>Name</th>
+        <th>Contact</th>
+        <th>Room</th>
+        <th>Start</th>
+        <th>End</th>
+    </thead>
+    <tbody>
+        {% for booking in bookings %}
+        <tr>
+            <td>{{booking.pk}} </td>
+            <td>{{booking.name}} </td>
+            <td>{{booking.contact}} </td>
+            <td>{{booking.room}} </td>
+            <td>{{booking.start}} </td>
+            <td>{{booking.end}} </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

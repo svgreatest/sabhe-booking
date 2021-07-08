@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1> Booking failed for {{room}} </h1>
+<h2> The room you're attempting to book has been already booked. Please retry booking </h2>
+<a class="btn btn-primary" href="{% url 'booking_list' %}">Retry booking </a>
+{% endblock %}

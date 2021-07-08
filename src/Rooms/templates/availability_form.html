@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+        <div>
+        <form method="post" class='form-group'>
+        <h3>Search room availability</h3>
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="Submit" value="Check availability">
+        </form>
+        </div>
+        <div>
+            {% if error != "" %}
+            <h2 style="color:red;"> {{error}} </h2>
+            {% endif %}
+        </div>
+    <div class='container'>
+        <table class="table"> 
+            <thead class="table table-dark">
+                <th>Room</th>
+                <th>Room type</th>
+                <th>Amount</th>
+                <th>From</th>
+                <th>To</th>
+                <th>Actions</th>
+            </thead>
+            <tbody>
+                {% for room in rooms %}
+                <form method="GET" action="{% url 'booking_add' %}">
+                    {% csrf_token %}
+                <tr>
+                    <td>{{room.room_id}} </td>
+                    <input type = "hidden" value = "{{room.room_id}}" name = "room_id" />
+                    <td>{{room.room_type}} </td>
+                    <input type = "hidden" value = "{{room.room_type}}" name = "room_type" />
+                    <td>{{room.price}} </td>
+                    <input type = "hidden" value = "{{room.room_price}}" name = "room_price" />
+                    <td> {{start_date | date:"F d, Y"}} </td>
+                    <input type = "hidden" value = "{{start_date | date:"F d, Y"}}" name = "start" />
+                    <td> {{end_date | date:"F d, Y"}} </td>
+                    <input type = "hidden" value = "{{end_date | date:"F d, Y"}}" name = "end" />
+                    <td><input type="submit" value="Book now" class="btn btn-primary"/></td>
+                </tr>
+                </form>
+                {% endfor %}
+                </tbody>
+            </table>
+    </div>
+    </form>
+{% endblock %}

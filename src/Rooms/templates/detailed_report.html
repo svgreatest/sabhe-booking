@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<form method="GET" action="{% url 'detailed_report_pdf' %}">
+    {{form.start | linebreaks}}
+    {{form.end | linebreaks}}
+    <input type="Submit" value="View detailed report as PDF">
+</form>
+{% endblock %}

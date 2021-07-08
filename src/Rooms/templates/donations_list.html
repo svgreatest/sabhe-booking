@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+<h1> Donations received today </h1>
+<div>
+        <table class="table"> 
+            <thead class="table table-dark">
+                <th>Donor</th>
+                <th>Contact</th>
+                <th>Amount</th>
+                <th>Reason</th>
+            </thead>
+            <tbody>
+                {% for donation in donations %}
+                <tr>
+                    <td>{{donation.name}} </td>
+                    <td>{{donation.contact}} </td>
+                    <td>{{donation.amount}} </td>
+                    <td>{{donation.reason}} </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <form action="{% url 'donations_add' %}">
+                <input type="submit" value="Donate">
+            </form>
+{% endblock %}

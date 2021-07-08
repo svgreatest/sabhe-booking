@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<h1> Today's Ambulance bookings</h1>
+<div>
+        <table class="table"> 
+            <thead class="table table-dark">
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Amount</th>
+                <th>Reason</th>
+            </thead>
+            <tbody>
+                {% for ambulance in ambulances %}
+                <tr>
+                    <td>{{ambulance.name}} </td>
+                    <td>{{ambulance.contact}} </td>
+                    <td>{{ambulance.amount}} </td>
+                    <td>{{ambulance.reason}} </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <form action="{% url 'ambulance_add' %}">
+                <input type="submit" value="Book">
+            </form>
+</div>
+{% endblock %}

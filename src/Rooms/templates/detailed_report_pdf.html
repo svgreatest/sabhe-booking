@@ -1,0 +1,81 @@
+<html>
+    <style>
+        h1 {
+          text-align: "center"
+        }
+    </style>
+    <head>
+        <h1 align="center"> Vaidika Dharma Sahaya Sabha (R) </h1>
+        <h2 align="center"> Report generated for {{start_date}} to {{end_date}} </h2>
+    </head>
+    <div>
+        <h1> Booking receipts </h1>
+        <table class="table"> 
+            <thead>
+                <th>Receipt No.</th>
+                <th> Room </th>
+                <th>Amount</th>
+            </thead>
+            {% for b in booking %}
+            {% for p in room_prices %}
+            {% if forloop.counter == forloop.parentloop.counter %}
+            <tr>
+                <td align="center"> {{ b.pk }} </td>
+                <td align="center"> {{ b.room }} </td>
+                {% if b.status == "Cancelled" %}
+                <td align="center"> 0 (Cancelled) </td>
+                {% else %}
+                <td align="center"> {{ p }} </td>
+                {% endif %}
+            </tr>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+        </table>
+        <h1> Ambulance receipts </h1>
+        <table class="table"> 
+            <thead>
+                <th>Receipt No.</th>
+                <th> Reason </th>
+                <th>Amount</th>
+            </thead>
+            {% for a in ambulance %}
+            <tr>
+                <td align="center"> {{ a.pk }} </td>
+                <td align="center"> {{ a.reason }} </td>
+                <td align="center"> {{ a.amount }} </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <h1> Donation receipts </h1>
+        <table class="table"> 
+            <thead>
+                <th>Receipt No.</th>
+                <th>Reason</th>
+                <th>Amount</th>
+            </thead>
+            {% for d in donations %}
+            <tr>
+                <td align="center"> {{ d.pk }} </td>
+                <td align="center"> {{ d.reason }} </td>
+                <td align="center"> {{ d.amount }} </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <h1> Expense vouchers </h1>
+        <table class="table"> 
+            <thead>
+                <th>Receipt No.</th>
+                <th>Reason </th>
+                <th>Amount</th>
+            </thead>
+            {% for e in expenses %}
+            <tr>
+                <td align="center"> {{ e.pk }} </td>
+                <td align="center"> {{ e.sub_category }} </td>
+                <td align="center"> {{ e.amount }} </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</html>

@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <form method="post" class="form-group">
+        {% csrf_token %}
+        <h3> Add expense </h3>
+        {{form.as_p}}
+        <input type = "submit" value="Add expense" class="btn btn-primary"/>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+<html>
+    <head>
+    <h1 align="center"> Vaidika Dharma Sahaya Sabha (R) </h1>
+    <h2 align="center"> Report generated for {{start_date}} to {{end_date}} </h2>
+    </head>
+    <div>
+    <table class="table"> 
+        <thead>
+            <th>Category</th>
+            <th>Amount</th>
+        </thead>
+        {% for key, value in data.items %}
+        <tr>
+            <td align="center"> {{ key }} </td>
+            {% if key == "Expenses" %}
+            <td align="center"> -{{ value }} </td>
+            {% else %}
+            <td align="center"> {{ value }} </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+        <tr>
+            <td align="center"> <strong> Total </strong></td>
+            <td align="center"> <strong> {{ total }} </strong></td>
+        </tr>
+    </table>
+    </div>
+</html>

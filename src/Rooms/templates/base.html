@@ -1,0 +1,38 @@
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block title %}<title>Vaidika Dharma Sahaaya Sabha (R)</title>{% endblock %}
+    </head>
+    <div class="page-header">
+        <h1 align="center">Vaidika Dharma Sahaya Sabha (R) </h1>
+        <h4 align="center"> 40, 16th Cross Rd, GD Park Extension,  Malleshwaram, Bengaluru - 560003</h4>
+        <h4 align="center"> Ph: 080-23462774, 080-23342170 </h4>
+        <h4 align="center"> Date: {% now "j M\, Y" %} </h4>
+    </div>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-2">
+                    {% block sidebar %}
+                    <ul class="sidebar-nav">
+                        <li><a href="{% url 'index' %}">Home</a></li>
+                        <li><a href="{% url 'rooms_list' %}">Rooms</a></li>
+                        <li><a href="{% url 'booking_list' %}">Book room</a></li>
+                        <li><a href="{% url 'today_booking' %}">Cancel room</a></li>
+                        <li><a href="{% url 'donations_list' %}">Donations</a></li>
+                        <li><a href="{% url 'reports_view' %}">Summary Report</a></li>
+                        <li><a href="{% url 'detailed_report_view' %}">Detailed Report</a></li>
+                        <li><a href="{% url 'ambulance_list' %}">Ambulance and other services</a></li>
+                        <li><a href="{% url 'expenses_add' %}">Expenses</a></li>
+                        <li><a href="{% url 'view_tomorrow_pdf' %}">View tomorrow's events</a></li>
+                    </ul>
+                    {% endblock %}
+                </div>
+                <div class="col-sm-10 ">{% block content %}{% endblock %}</div>
+            </div>
+        </div>
+    </body>
+</html>

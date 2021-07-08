@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block content %}
+    <div class="form-group">
+        <form method="post">
+        <h3> Add room </h3>
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input type="Submit" class="btn btn-primary" value="Add">
+        </form>
+    </div>
+{% endblock %} 

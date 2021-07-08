@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <title> Booking </title>
+        </head>
+    <h1> Booking management</h1>
+<div>
+        <table class="table"> 
+            <thead class="table table-dark">
+                <th>Name</th>
+                <th>Contact</th>
+                <th>Room</th>
+                <th>Price</th>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                <tr>
+                    <td>{{booking.name}} </td>
+                    <td>{{booking.contact}} </td>
+                    <td>{{booking.room.room_id}} </td>
+                    <td>{{booking.room.price}} </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <form action="{% url 'booking_add' %}" method="post">
+                <input type="submit" value="Book room">
+            </form>
+</div>
+</html>

@@ -1,0 +1,24 @@
+{% load bootstrap3 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<html>
+    <title> Edit room </title>
+    <div class='form-group'>
+        <form action="{% url 'room_edit' room.id %}" method="POST">
+            {% csrf_token %}
+            <p>
+                <label for="">Room ID</label>
+                <input type="text" name="room_id" value = "{{room.room_id}}" />
+            </p>
+            <p>
+                <label for="">Room type</label>
+                <input type="text" name="room_type" value = "{{room.room_type}}" />
+            </p>
+            <p>
+                <label for="">Room price (Rs)</label>
+                <input type="text" name="room_price" value = "{{room.price}}"/>
+            </p>
+            <input type="submit" value="Save"></input>
+        </form>
+    </div>
+</html>
